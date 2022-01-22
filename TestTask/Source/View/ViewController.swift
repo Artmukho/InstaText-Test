@@ -71,15 +71,23 @@ class ViewController: UIViewController {
 //MARK: - Extensions
 
 extension ViewController: UITextViewDelegate {
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
-            
+        if  textView.text == "Вставьте сюда текст или начните печатать" {
+            textView.text = " "
+            textView.textColor = .darkGray
         }
+    }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-         return true
+        if textView.text == "" {
+            textView.resignFirstResponder()
+            textView.text = "Вставьте сюда текст или начните печатать"
+            textView.textColor = .lightGray
         }
+         return true
+    }
     
     func textViewDidChange(_ textView: UITextView) {
-
-        }
+    }
 }
