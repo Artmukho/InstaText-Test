@@ -65,6 +65,25 @@ class ViewController: UIViewController {
         textView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         textView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100).isActive = true
     }
+    
+    // MARK: - Functions
+    
+    private func takePicture() {
+        UIGraphicsBeginImageContextWithOptions(textView.bounds.size, true, 0)
+        guard let context = UIGraphicsGetCurrentContext() else { return }
+        textView.layer.render(in: context)
+        guard let image = UIGraphicsGetImageFromCurrentImageContext() else { return }
+        UIGraphicsEndImageContext()
+        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+    }
+    
+    private func selectDisabled() {
+        textView.isSelectable = false
+    }
+    
+    private func editEnabled() {
+        textView.isEditable = true
+    }
 
 }
 
