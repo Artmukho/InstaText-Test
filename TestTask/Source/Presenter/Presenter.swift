@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+
+class Presenter: ViewOutput {
+    
+    var view: ViewInput?
+    
+    func saveButtonAction() {
+        view?.selectDisabled()
+        view?.takePicture()
+        view?.editEnabled()
+    }
+}
