@@ -21,18 +21,19 @@ class ViewController: UIViewController {
     }()
     
     lazy var textView: UITextView = {
-           let text = UITextView()
-           text.backgroundColor = .systemBackground
-           text.font = .systemFont(ofSize: 14)
-           text.isScrollEnabled = false
-           text.text = "Вставьте сюда текст или начните печатать"
-           text.textColor = .lightGray
-           text.textContainerInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
-           text.layer.masksToBounds = false
-           text.layer.shadowOffset = CGSize(width: 1, height: 1)
-           text.layer.shadowRadius = 1
-           text.layer.shadowOpacity = 0.4
-           return text
+        let text = UITextView()
+        text.delegate = self
+        text.backgroundColor = .systemBackground
+        text.font = .systemFont(ofSize: 14)
+        text.isScrollEnabled = false
+        text.text = "Вставьте сюда текст или начните печатать"
+        text.textColor = .lightGray
+        text.textContainerInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+        text.layer.masksToBounds = false
+        text.layer.shadowOffset = CGSize(width: 1, height: 1)
+        text.layer.shadowRadius = 1
+        text.layer.shadowOpacity = 0.4
+        return text
        }()
     
     //MARK: -LifyCycle
@@ -65,4 +66,20 @@ class ViewController: UIViewController {
         textView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100).isActive = true
     }
 
+}
+
+//MARK: - Extensions
+
+extension ViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+            
+        }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+         return true
+        }
+    
+    func textViewDidChange(_ textView: UITextView) {
+
+        }
 }
