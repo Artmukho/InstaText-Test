@@ -89,5 +89,6 @@ extension ViewController: UITextViewDelegate {
     }
     
     func textViewDidChange(_ textView: UITextView) {
+        saveButton.isEnabled = textView.text.isEmpty ? false : true
     }
 }
