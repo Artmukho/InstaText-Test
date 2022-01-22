@@ -7,7 +7,9 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, ViewInput {
+    
+    var output: ViewOutput?
     
     //MARK: -Properties
     
@@ -68,7 +70,7 @@ class ViewController: UIViewController {
     
     // MARK: - Functions
     
-    private func takePicture() {
+    func takePicture() {
         UIGraphicsBeginImageContextWithOptions(textView.bounds.size, true, 0)
         guard let context = UIGraphicsGetCurrentContext() else { return }
         textView.layer.render(in: context)
@@ -77,11 +79,11 @@ class ViewController: UIViewController {
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
     }
     
-    private func selectDisabled() {
+    func selectDisabled() {
         textView.isSelectable = false
     }
     
-    private func editEnabled() {
+    func editEnabled() {
         textView.isEditable = true
     }
 
