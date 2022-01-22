@@ -19,6 +19,7 @@ class ViewController: UIViewController, ViewInput {
         button.setTitleColor(.black, for: .normal)
         button.setTitleColor(.lightGray, for: .disabled)
         button.isEnabled = false
+        button.addTarget(self, action: #selector(saveButtonAction), for: .touchUpInside)
         return button
     }()
     
@@ -85,6 +86,11 @@ class ViewController: UIViewController, ViewInput {
     
     func editEnabled() {
         textView.isEditable = true
+    }
+    //MARK: - Actions
+    
+    @objc func saveButtonAction() {
+        output?.saveButtonAction()
     }
 
 }
