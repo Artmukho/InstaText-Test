@@ -20,6 +20,21 @@ class ViewController: UIViewController {
         return button
     }()
     
+    lazy var textView: UITextView = {
+           let text = UITextView()
+           text.backgroundColor = .systemBackground
+           text.font = .systemFont(ofSize: 14)
+           text.isScrollEnabled = false
+           text.text = "Вставьте сюда текст или начните печатать"
+           text.textColor = .lightGray
+           text.textContainerInset = UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
+           text.layer.masksToBounds = false
+           text.layer.shadowOffset = CGSize(width: 1, height: 1)
+           text.layer.shadowRadius = 1
+           text.layer.shadowOpacity = 0.4
+           return text
+       }()
+    
     //MARK: -LifyCycle
     
     override func viewDidLoad() {
@@ -34,6 +49,7 @@ class ViewController: UIViewController {
     
     private func setupHierarchy() {
         view.addSubview(saveButton)
+        view.addSubview(textView)
     }
     
     private func setupLayout() {
@@ -41,6 +57,12 @@ class ViewController: UIViewController {
         saveButton.translatesAutoresizingMaskIntoConstraints = false
         saveButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         saveButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant:  -40).isActive = true
+        
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        textView.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -100).isActive = true
+        textView.heightAnchor.constraint(equalToConstant: 400).isActive = true
+        textView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        textView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100).isActive = true
     }
 
 }
