@@ -80,12 +80,20 @@ class ViewController: UIViewController, ViewInput {
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
     }
     
+    func prepareTextToImage() {
+        let text = textView.text
+        textView.text = ""
+        textView.text = text
+    }
+    
     func selectDisabled() {
         textView.isSelectable = false
+        textView.spellCheckingType = .no
     }
     
     func editEnabled() {
         textView.isEditable = true
+        textView.spellCheckingType = .default
     }
     //MARK: - Actions
     

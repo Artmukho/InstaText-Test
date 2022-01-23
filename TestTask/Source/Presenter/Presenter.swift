@@ -14,6 +14,7 @@ class Presenter: ViewOutput {
     
     func saveButtonAction() {
         view?.selectDisabled()
+        view?.prepareTextToImage()
         view?.takePicture()
         view?.editEnabled()
     }

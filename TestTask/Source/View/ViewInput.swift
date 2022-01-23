@@ -12,4 +12,5 @@ protocol ViewInput {
     func takePicture()
     func selectDisabled()
     func editEnabled()
+    func prepareTextToImage()
 }
