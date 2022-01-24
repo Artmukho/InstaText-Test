@@ -9,9 +9,14 @@ import UIKit
 
 class ViewController: UIViewController, ViewInput {
     
-    var output: ViewOutput?
-    
     //MARK: -Properties
+    
+    var output: ViewOutput?
+    var keyboardIsActive: Bool = false {
+        didSet {
+            
+        }
+    }
     
     lazy var saveButton: UIButton = {
         let button = UIButton(type: .system)
@@ -47,6 +52,7 @@ class ViewController: UIViewController, ViewInput {
         bar.layer.shadowColor = UIColor.purple.cgColor
         bar.layer.shadowOffset = CGSize(width: 0, height: 1)
         bar.layer.shadowOpacity = 0.2
+        bar.keyboardButton.addTarget(self, action: #selector(keyboardButtonAction), for: .touchUpInside)
         return bar
     }()
     
@@ -112,10 +118,26 @@ class ViewController: UIViewController, ViewInput {
         textView.isEditable = true
         textView.spellCheckingType = .default
     }
+    
+    func showKeyboard() {
+        textView.becomeFirstResponder()
+        keyboardIsActive = true
+
+    }
+    
+    func hideKeyboard() {
+        textView.resignFirstResponder()
+        keyboardIsActive = false
+
+    }
     //MARK: - Actions
     
     @objc func saveButtonAction() {
         output?.saveButtonAction()
+    }
+    
+    @objc func keyboardButtonAction() {
+        keyboardIsActive ? hideKeyboard() : showKeyboard()
     }
 
 }
@@ -128,12 +150,14 @@ extension ViewController: UITextViewDelegate {
         if  textView.text == "Вставьте сюда текст или начните печатать" {
             textView.text = " "
             textView.textColor = .darkGray
+            keyboardIsActive = true
         }
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if textView.text == "" {
             textView.resignFirstResponder()
+            keyboardIsActive = false
             textView.text = "Вставьте сюда текст или начните печатать"
             textView.textColor = .lightGray
         }
