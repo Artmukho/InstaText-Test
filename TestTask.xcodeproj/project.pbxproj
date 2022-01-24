@@ -12,10 +12,10 @@
 		DC1BB61E279A8B9000E20BE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC1BB61D279A8B9000E20BE7 /* Assets.xcassets */; };
 		DC1BB636279AF0F700E20BE7 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1BB635279AF0F700E20BE7 /* Model.swift */; };
 		DC1BB638279AF10400E20BE7 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1BB637279AF10400E20BE7 /* Presenter.swift */; };
-		DC34C9FB279C92FC00B59530 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC34C9FA279C92FC00B59530 /* TextView.swift */; };
 		DC34C9FF279CA11E00B59530 /* ViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC34C9FE279CA11E00B59530 /* ViewInput.swift */; };
 		DC34CA01279CA13200B59530 /* ViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC34CA00279CA13200B59530 /* ViewOutput.swift */; };
 		DC34CA04279CB77200B59530 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC34CA03279CB77200B59530 /* Assembler.swift */; };
+		DCC936EF279F23AC00BBB06E /* Toolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC936EE279F23AC00BBB06E /* Toolbar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,10 +26,10 @@
 		DC1BB622279A8B9000E20BE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC1BB635279AF0F700E20BE7 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		DC1BB637279AF10400E20BE7 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
-		DC34C9FA279C92FC00B59530 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		DC34C9FE279CA11E00B59530 /* ViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewInput.swift; sourceTree = "<group>"; };
 		DC34CA00279CA13200B59530 /* ViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOutput.swift; sourceTree = "<group>"; };
 		DC34CA03279CB77200B59530 /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
+		DCC936EE279F23AC00BBB06E /* Toolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toolbar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				DC1BB618279A8B8E00E20BE7 /* ViewController.swift */,
-				DC34C9FA279C92FC00B59530 /* TextView.swift */,
+				DCC936EE279F23AC00BBB06E /* Toolbar.swift */,
 				DC34C9FE279CA11E00B59530 /* ViewInput.swift */,
 				DC34CA00279CA13200B59530 /* ViewOutput.swift */,
 			);
@@ -210,9 +210,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC34CA04279CB77200B59530 /* Assembler.swift in Sources */,
-				DC34C9FB279C92FC00B59530 /* TextView.swift in Sources */,
 				DC34C9FF279CA11E00B59530 /* ViewInput.swift in Sources */,
 				DC1BB636279AF0F700E20BE7 /* Model.swift in Sources */,
+				DCC936EF279F23AC00BBB06E /* Toolbar.swift in Sources */,
 				DC1BB619279A8B8E00E20BE7 /* ViewController.swift in Sources */,
 				DC1BB638279AF10400E20BE7 /* Presenter.swift in Sources */,
 				DC1BB615279A8B8E00E20BE7 /* AppDelegate.swift in Sources */,

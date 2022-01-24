@@ -39,6 +39,17 @@ class ViewController: UIViewController, ViewInput {
         return text
        }()
     
+    lazy var toolbar: Toolbar = {
+        let bar = Toolbar()
+        bar.backgroundColor = .white
+        bar.layer.masksToBounds = false
+        bar.layer.cornerRadius = 20
+        bar.layer.shadowColor = UIColor.purple.cgColor
+        bar.layer.shadowOffset = CGSize(width: 0, height: 1)
+        bar.layer.shadowOpacity = 0.2
+        return bar
+    }()
+    
     //MARK: -LifyCycle
     
     override func viewDidLoad() {
@@ -54,6 +65,7 @@ class ViewController: UIViewController, ViewInput {
     private func setupHierarchy() {
         view.addSubview(saveButton)
         view.addSubview(textView)
+        view.addSubview(toolbar)
     }
     
     private func setupLayout() {
@@ -67,6 +79,11 @@ class ViewController: UIViewController, ViewInput {
         textView.heightAnchor.constraint(equalToConstant: 400).isActive = true
         textView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         textView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100).isActive = true
+        
+        toolbar.translatesAutoresizingMaskIntoConstraints = false
+        toolbar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50).isActive = true
+        toolbar.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor).isActive = true
+        toolbar.heightAnchor.constraint(equalToConstant: 80).isActive = true
     }
     
     // MARK: - Functions
