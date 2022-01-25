@@ -12,11 +12,7 @@ class ViewController: UIViewController, ViewInput {
     //MARK: -Properties
     
     var output: ViewOutput?
-    var keyboardIsActive: Bool = false {
-        didSet {
-            
-        }
-    }
+    var keyboardIsActive: Bool = false
     
     lazy var saveButton: UIButton = {
         let button = UIButton(type: .system)
@@ -64,8 +60,11 @@ class ViewController: UIViewController, ViewInput {
         
         setupHierarchy()
         setupLayout()
-        
-
+        registerForKeyboardNotifications()
+    }
+    
+    deinit {
+        removeKeyboardNotification()
     }
     
     private func setupHierarchy() {
@@ -87,6 +86,7 @@ class ViewController: UIViewController, ViewInput {
         textView.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100).isActive = true
         
         toolbar.translatesAutoresizingMaskIntoConstraints = false
+        toolbar.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         toolbar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50).isActive = true
         toolbar.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor).isActive = true
         toolbar.heightAnchor.constraint(equalToConstant: 80).isActive = true
@@ -119,17 +119,40 @@ class ViewController: UIViewController, ViewInput {
         textView.spellCheckingType = .default
     }
     
-    func showKeyboard() {
-        textView.becomeFirstResponder()
+    func showKeyboard(frame: CGFloat) {
+        toolbar.transform = CGAffineTransform(translationX: 0, y: frame)
         keyboardIsActive = true
-
     }
     
     func hideKeyboard() {
         textView.resignFirstResponder()
         keyboardIsActive = false
-
+        toolbar.transform = CGAffineTransform.identity
     }
+    
+    func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    func removeKeyboardNotification() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: NSNotification) {
+        let userInfo = notification.userInfo
+        if let frame = (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let keyboardHeight = -frame.height + 20
+            showKeyboard(frame: keyboardHeight)
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: NSNotification) {
+        toolbar.transform = CGAffineTransform.identity
+        keyboardIsActive = false
+    }
+    
     //MARK: - Actions
     
     @objc func saveButtonAction() {
@@ -137,7 +160,11 @@ class ViewController: UIViewController, ViewInput {
     }
     
     @objc func keyboardButtonAction() {
-        keyboardIsActive ? hideKeyboard() : showKeyboard()
+        if keyboardIsActive {
+            textView.resignFirstResponder()
+        } else {
+            textView.becomeFirstResponder()
+        }
     }
 
 }
