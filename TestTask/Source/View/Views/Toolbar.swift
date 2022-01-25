@@ -25,6 +25,8 @@ class Toolbar: UIView {
         return button
     }()
     
+    lazy var textFontChangeView = TextFontChangeCollectionView()
+    
     //MARK: - Initializers
     
     override init(frame: CGRect) {
@@ -40,6 +42,7 @@ class Toolbar: UIView {
     private func setupHierarchy() {
         addSubview(keyboardButton)
         addSubview(fontChangeButton)
+        addSubview(textFontChangeView)
     }
     
     private func setupLayot() {
@@ -51,6 +54,13 @@ class Toolbar: UIView {
         fontChangeButton.translatesAutoresizingMaskIntoConstraints = false
         fontChangeButton.topAnchor.constraint(equalTo: topAnchor, constant: 20).isActive = true
         fontChangeButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24).isActive = true
+        
+//        textFontChangeView.translatesAutoresizingMaskIntoConstraints = false
+//        textFontChangeView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+//        textFontChangeView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+//        textFontChangeView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15).isActive = true
+//        textFontChangeView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15).isActive = true
+//        textFontChangeView.heightAnchor.constraint(equalToConstant: 100).isActive = true
     }
 }
 

@@ -11,6 +11,7 @@ import Foundation
 class Presenter: ViewOutput {
     
     var view: ViewInput?
+    var model: CellManager?
     
     func saveButtonAction() {
         view?.selectDisabled()
